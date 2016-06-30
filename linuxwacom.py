@@ -22,7 +22,7 @@ for event in DEV.read_loop():
         if event.code == 1:
             AXIS['y'] = event.value/100.0
         if event.code == 24:
-            AXIS['y'] = event.value
+            AXIS['pressure'] = event.value
         #print(str(AXIS['x']) + " " + str(AXIS['y']))
         data = pack('dddd', 666., AXIS['x'], AXIS['y'], AXIS['pressure'])
         UDPSOCK.sendto(data, SEND_ADDR)
