@@ -42,5 +42,5 @@ for event in DEV.read_loop():
         else:
             amplitude = - AXIS['x']['value']
             direction = 1
-        data = pack('dddd', 666., amplitude, direction, AXIS['y']['value'])
+        data = pack('dddd', 664., amplitude, direction, AXIS['y']['value'])
         UDPSOCK.sendto(data, SEND_ADDR)
