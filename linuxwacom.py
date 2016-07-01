@@ -20,14 +20,12 @@ AXIS['x']['num'] = 0
 AXIS['y'] = {}
 AXIS['y']['num'] = 1
 AXIS['pressure'] = {}
-AXIS['pressure']['num'] = 24
-i = 0
+AXIS['pressure']['num'] = 2
 for axis in AXIS:
     AXIS[axis]['value'] = 0.0
-    AXIS[axis]['max'] = CARAC[3][i][1][2]
-    AXIS[axis]['res'] = CARAC[3][i][1][5]
+    AXIS[axis]['max'] = CARAC[3][AXIS[axis]['num']][1][2]
+    AXIS[axis]['res'] = CARAC[3][AXIS[axis]['num']][1][5]
     print(axis + " max: " + str(AXIS[axis]['max']) + " res: " + str(AXIS[axis]['res']))
-    i += 1
 
 for event in DEV.read_loop():
     if event.type == evdev.ecodes.EV_ABS:
