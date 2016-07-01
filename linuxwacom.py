@@ -30,11 +30,17 @@ for axis in AXIS:
 for event in DEV.read_loop():
     if event.type == evdev.ecodes.EV_ABS:
         if event.code == 0:
-            AXIS['x']['value'] = event.value/100.0
+            AXIS['x']['value'] = event.value/AXIS['x']['max'] * 200.0 - 100.0
         if event.code == 1:
-            AXIS['y']['value'] = event.value/100.0
+            AXIS['y']['value'] = event.value/AXIS['y']['max'] * 100.0
         if event.code == 24:
             AXIS['pressure']['value'] = event.value
         #print(str(AXIS['x']) + " " + str(AXIS['y']))
-        data = pack('dddd', 666., AXIS['x']['value'], AXIS['y']['value'], AXIS['pressure']['value'])
+        if AXIS['x']['value'] > 0.0:
+            amplitude = AXIS['x']['value']
+            direction = 0
+        else:
+            amplitude = - AXIS['x']['value']
+            direction = 1
+        data = pack('dddd', 666., amplitude, direction, AXIS['y']['value'])
         UDPSOCK.sendto(data, SEND_ADDR)
