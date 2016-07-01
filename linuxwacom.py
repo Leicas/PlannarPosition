@@ -3,8 +3,8 @@ import socket
 from struct import pack
 
 # Communication udp
-#SEND_ADDR = ("localhost", 5432)
-SEND_ADDR = ("134.157.19.154", 5432)
+SEND_ADDR = ("localhost", 5151)
+#SEND_ADDR = ("134.157.19.154", 5432)
 UDPSOCK = socket.socket(type=socket.SOCK_DGRAM)
 
 # Caracteristiques tablette
