@@ -21,7 +21,7 @@ AXIS['y'] = {}
 AXIS['y']['num'] = 1
 AXIS['pressure'] = {}
 AXIS['pressure']['num'] = 24
-i = 0
+i = 1
 for axis in AXIS:
     AXIS[axis]['value'] = 0.0
     AXIS[axis]['max'] = CARAC[3][i][2][3]
