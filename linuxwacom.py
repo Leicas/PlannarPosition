@@ -12,15 +12,21 @@ DEVICES = [evdev.InputDevice(fn) for fn in evdev.list_devices()]
 for device in DEVICES:
     print(device.fn, device.name, device.phys)
 DEV = evdev.InputDevice('/dev/input/event0')
-CARAC = DEV.capabilities(verbose=True)
+CARAC = DEV.capabilities()
 print(CARAC[3])
 AXIS = {}
 AXIS['x'] = {}
+AXIS['x']['num'] = 0
 AXIS['y'] = {}
+AXIS['y']['num'] = 1
 AXIS['pressure'] = {}
+AXIS['pressure']['num'] = 24
+i = 0
 for axis in AXIS:
     AXIS[axis]['value'] = 0.0
-    #AXIS[axis]['max'] = 
+    AXIS[axis]['max'] = CARAC[3][i][2][3]
+    print(AXIS[axis]['max'])
+    i += 1
 
 for event in DEV.read_loop():
     if event.type == evdev.ecodes.EV_ABS:
