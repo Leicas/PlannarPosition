@@ -6,7 +6,7 @@ from struct import unpack
 UDPSOCK = socket.socket(type=socket.SOCK_DGRAM)
 
 # Ecoute sur port 21567 a tous les IPs
-listen_addr = ("",5432)
+listen_addr = ("",5151)
 #send_addr = ("localhost",5432)
 
 UDPSOCK.bind(listen_addr)
